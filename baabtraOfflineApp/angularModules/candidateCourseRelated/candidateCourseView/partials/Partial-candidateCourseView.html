@@ -1,0 +1,65 @@
+<div class="co-xs-12">
+  
+  <!-- header -->
+  <div class="row no-margin ">
+    <div class="col-xs-12  bg-white b-b fixed-tab">
+
+      <div class="row">
+
+        <!--  commented by arun to change the sudent view -->
+        <div class="col-xs-6">
+          <!-- View course timeline btn -->
+          <a class="btn btn-info  hidden-xs" ng-disabled="!courseId.$oid" ng-click="navigateToTimeline(courseId)">View course timeline</a>
+
+          <!-- View course summary btn -->
+          <a class="btn btn-success  hidden-xs" ng-click="navigateToSummary(courseId)">View course summary</a>
+        </div>
+       <!--  <div class="col-xs-12 col-sm-6">
+
+          <percent-indicator value-suffix="Your score is " show-percentage="true" total-value="totalMark" obtain-value="markScored"></percent-indicator>
+        </div> -->
+        <!--  commented by arun to change the sudent view ends-->
+
+        <!-- change made in student view by arun -->
+        <div class="col-xs-12 col-sm-6 text-right">
+        <i class="btn no-padding mdi-action-view-list text-2x" ng-click="showSyllabus()"></i>
+        </div>
+        <!-- change made in student view by arun ends -->
+
+      </div>
+    </div>
+  </div>
+
+  <!-- assignment view -->
+
+  <div class="row" style="margin-top: 56px;">
+    <div class="col-xs-12 p bg-light">
+      <div ng-show="!lastElement&&courseId.$oid" class="col-xs-push-1 col-md-push-2 col-md-8 col-xs-10 p shadow-z-1 btn-material-green-A200">
+        <span class="font-bold" ng-if="PrevObj.elements[0].value">{{PrevObj.elements[0].value}}</span>
+        <span class="label label-warning pull-right" ng-if="(!PrevObj.evalStatus)&&PrevObj.evaluable">Pending submission</span>
+        
+        <span class="label label-info pull-right" ng-if="PrevObj.evalStatus">{{PrevObj.evalStatus}}</span>
+      
+      </div>
+
+      <div  class="col-xs-push-1 col-md-push-2 col-md-8 col-xs-10 p shadow-z-1 bg-white ">
+          
+           
+          <course-element-full-view course-id="courseId.$oid" preview-data="PrevObj"></course-element-full-view>
+          <button  class="btn btn-info btn-raised am-fadeIn" ng-disabled="(lastViewedOrder == 0) || getElementClicked" ng-click="getElement('previous')" ng->Previous<!-- <i class="mdi-navigation-chevron-left" style="  font-size: x-large;right: 6px;"></i> --></button>
+          <!-- style="position: fixed;left: 15%;" -->
+          <!-- <a  class="btn btn-info btn-raised">Info</a> -->
+          <button   class="btn btn-info btn-raised pull-right am-fadeIn" ng-disabled="lastElement || getElementClicked" ng-click="getElement('next')">Next<!-- <i class="mdi-navigation-chevron-right font-bold" style="font-size: x-large;right: 4px;" ></i> --></button>
+          <!-- style="position: fixed;right: 15%;" -->
+       
+
+        <div ng-show="lastElement&&courseId.$oid" class="col-xs-12 p">
+                <div class="alert alert-dismissable alert-danger">
+                    <strong>Oh sorry..!</strong> There are no more meterials to show.
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
+
+</div>
